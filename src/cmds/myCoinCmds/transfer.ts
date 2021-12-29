@@ -27,7 +27,7 @@ export async function handler(argv: Arguments<Options>): Promise<void> {
     const provider = new ethers.providers.JsonRpcProvider(providerUrl);
     const wallet = new ethers.Wallet(privateKey, provider)
     const service = new MyCoinService(provider, wallet)
-    const balance=await service.transfer(contractAddress,toAddress,BigNumber.from(amount))
-    process.stdout.write(balance.toString());
+    const txn=await service.transfer(contractAddress,toAddress,BigNumber.from(amount))
+    process.stdout.write(txn.toString());
     process.exit(0);
 };
